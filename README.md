@@ -1,106 +1,115 @@
-# Experiment 10
+# EXPERIMENT 10
 
-# Aim:
-To study and implement Pointer Operations (Call by value and Call by reference)
+## AIM
+To study and implement Pointer Operations (call by value and call by reference) 
 
-# Theory:
-Call by Reference: In Call by Reference, instead of passing a copy of the variable, the address (or reference) of the variable is passed to the function. The function can then modify the actual value of the argument used to call the function.
-Call by Value is safer when you want to ensure that the original data isn’t modified.
+## THEORY
+Call by Value and Call by Reference are two approaches of how arguments can be passed to functions in programming.
 
-Call by Reference: In Call by Reference, instead of passing a copy of the variable, the address (or reference) of the variable is passed to the function. The function can then modify the actual value of the argument used to call the function.
-Call by Reference is more efficient for large data structures and when you need to modify the original data.
+Call by Value:
 
-# Codes 
-## 1. Call By Value 1:
-~~~
-///Name: Sumit Pandey
-//Prn: 23070123133
-//Class: EnTC B-3
-#include<iostream> 
-using namespace std; 
-void swap(int x, int y) 
+A copy of the actual value is given to the function.
+
+The parameter’s changes that occur in a function have no effect on an initial object.
+
+Commonly used in languages like C, which pass basic data types (such as int or float) by value.
+
+Call by Reference:
+
+A reference (or address) to the actual data is passed to the function.
+
+Changes made to the parameter inside the function directly affect the original argument.
+
+This method is useful when using languages such as C++ (with pointers).
+
+## CODE
+a.<br>
+
+```
+#include <iostream>
+using namespace std;
+
+//call by value
+int a,b;
+void swap (int a, int b)
 {
-    int swap;
-    swap=x;
-    x=y;
-    y=swap;
+    int sw;
+    sw = a;
+    a = b;
+    b = sw;
+    cout<<"Swapped Values: "<<endl;
+    cout<<"a: "<<a<<endl;
+    cout<<"b: "<<b<<endl;
 }
 
-int main() 
+int main()
 {
-    int a=4, b=7;
+    int a,b;
+    cout<<"Using call by value: "<<endl;
+    cout<<"Enter a number: ";
+    cin>>a;
+    cout<<"Enter another number: ";
+    cin>>b;
+    cout<<"User Values: "<<endl;
+    cout<<"a: "<<a<<endl;
+    cout<<"b: "<<b<<endl;
     swap(a,b);
-    cout<<"Value of a is: "<<a<<"\n";
-    cout<<"Value of b is: "<<b<<"\n";
-    return 0;
+    
 }
-~~~
+    
+```
+<br>
 
-## Output:
+b.<br>
 
-![image](https://github.com/user-attachments/assets/70c62d74-21cb-48a8-a284-bc7ff16d073d)
+```
+#include <iostream>
+using namespace std;
 
-
-## 2. Call By Value 2:
-~~~
-//Name: Sumit Pandey
-//Prn: 23070123133
-//Class: EnTC B-3
-#include<iostream> 
-using namespace std; 
-void swap(int *x, int *y) 
+//call by value
+int a,b;
+int *pa, *pb;
+void swapr (int *pa, int *pb)
 {
-    int *swap;
-    swap=x;
-    x=y;
-    y=swap;
+    int *psw;
+    int sw;
+    psw = &sw;
+    *psw = *pa;
+    *pa = *pb;
+    *pb = *psw;
+    cout<<"Swapped Values: "<<endl;
+    cout<<"a: "<<*pa<<endl;
+    cout<<"b: "<<*pb<<endl;
 }
 
-int main() 
+int main()
 {
-    int a=4,b=7;
-    swap(a,b);
-    cout<<"Value of a is: "<<a<<"\n";
-    cout<<"Value of b is: "<<b<<"\n";
-    return 0;
-}
-~~~
-
-## Output:
-
-![image](https://github.com/user-attachments/assets/1656ba59-14ea-462f-b57f-74f93a4a57e7)
-
-
-## 3. Call By Reference:
-~~~
-//Name: Sumit Pandey
-//Prn: 23070123133
-//Class: EnTC B-3
-#include<iostream> 
-using namespace std; 
-void swap(int *x, int *y) 
-{
-    int swap;
-    swap=*x;
-    *x=*y;
-    *y=swap;
+    int a,b;
+    int *pa, *pb;
+    cout<<"Using call by refrence: "<<endl;
+    cout<<"Enter a number: ";
+    cin>>a;
+    pa = &a;
+    cout<<"Enter another number: ";
+    cin>>b;
+    pb = &b;
+    cout<<"User Values: "<<endl;
+    cout<<"a: "<<a<<endl;
+    cout<<"b: "<<b<<endl;
+    swapr(pa,pb);
+    
 }
 
-int main() 
-{
-    int a=4,b=7;
-    swap(&a,&b);
-    cout<<"Value of a is: "<<a<<"\n";
-    cout<<"Value of b is: "<<b<<"\n";
-    return 0;
-}
-~~~
+```
+## OUTPUT
 
-## Output:
+![image](https://github.com/user-attachments/assets/4d76a0dd-856b-4e65-a286-81a9256b7d65)
 
-![image](https://github.com/user-attachments/assets/2fb0cb54-fd44-4d87-9f4f-74848b2fa02f)
+![image](https://github.com/user-attachments/assets/4bdf3ced-7f3b-48ae-9b92-aa7f95d7f40f)
 
-## Conclusion: 
-In C++, the concepts of call by value and call by reference, particularly when using pointers, play crucial roles in how functions interact with data. When a function is called by value, a copy of the actual argument is passed, meaning any changes made within the function do not affect the original argument. This is useful when you want to ensure the original data remains unchanged. However, even when pointers are used in a call by value, altering the pointer inside the function does not affect the original pointer in the caller function.
 
-On the other hand, call by reference allows the function to receive a reference to the actual argument, meaning any modifications directly impact the original data. By passing a pointer as an argument, the function can directly manipulate the data at that memory location, making this approach efficient for modifying large data structures or arrays without the overhead of copying. This method is particularly advantageous when the goal is to alter the original data or handle large datasets where copying would be inefficient.
+
+
+## CONCLUSION
+ We learnt about call by value and call by reference in C++. <br>
+ We learnt the use case of each in C++. <br>
